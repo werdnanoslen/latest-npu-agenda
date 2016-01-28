@@ -35,5 +35,7 @@ app.get('/demos/latest-npu-agenda/:npu', function(req, res){
     var requestedNPU = req.params.npu.toUpperCase();
     res.redirect(collection[requestedNPU]);
 });
-app.listen(8080);
-console.log("The server is now running on port 8080.");
+
+app.set('port', process.env.PORT || 8000);
+app.listen(app.get('port'));
+console.log("The server is now running on port " + app.get('port'));
